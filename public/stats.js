@@ -11,8 +11,8 @@ fetch("/api/workouts/range")
 
 API.getWorkoutsInRange()
 
-  function generatePalette() {
-    const arr = [
+function generatePalette() {
+  const arr = [
     "#003f5c",
     "#2f4b7c",
     "#665191",
@@ -32,8 +32,12 @@ API.getWorkoutsInRange()
   ]
 
   return arr;
-  }
+}
 function populateChart(data) {
+  // new functions
+  let durations2 = duration2(data);
+  let pounds2 = calculateTotalWeight(data);
+
   let durations = duration(data);
   let pounds = calculateTotalWeight(data);
   let workouts = workoutNames(data);
@@ -61,7 +65,7 @@ function populateChart(data) {
           label: "Workout Duration In Minutes",
           backgroundColor: "red",
           borderColor: "red",
-          data: durations,
+          data: durations2,
           fill: false
         }
       ]
@@ -107,7 +111,7 @@ function populateChart(data) {
       datasets: [
         {
           label: "Pounds",
-          data: pounds,
+          data: pounds2,
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
             "rgba(54, 162, 235, 0.2)",
@@ -186,6 +190,39 @@ function populateChart(data) {
   });
 }
 
+/// Using Shane's code to fix the spread of the workout ///
+
+function duration2(data) {
+  let durations = [];
+
+  data.forEach(workout => {
+    var day = new Date(workout.day).getDay();
+    durations[day] = 0;
+
+    workout.exercises.forEach(exercise => {
+      durations[day] += exercise.duration;
+    });
+  });
+
+  return durations;
+}
+function calculateTotalWeight2(data) {
+  let total = [];
+
+  data.forEach(workout => {
+    var day = new Date(workout.day).getDay();
+    total[day] = 0;
+
+    workout.exercises.forEach(exercise => {
+      total[day] += exercise.weight;
+    });
+  });
+
+  return total;
+}
+
+///////////////////////////////////////////////////////////////
+
 function duration(data) {
   let durations = [];
 
@@ -218,6 +255,6 @@ function workoutNames(data) {
       workouts.push(exercise.name);
     });
   });
-  
+
   return workouts;
 }
