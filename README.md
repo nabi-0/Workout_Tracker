@@ -3,14 +3,11 @@
 
 ## Description
 
+This application will allow the user to view, create and track their daily workouts. They will be able to log multiple exercises in a workout on a given day. The applicaton will also be able to track the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, it should be able to track the users distance traveled.
 
-* 
+Try this application, just follow the link: 
 
-* 
-
-* 
-
-* 
+* https://workout-tracker-roku.herokuapp.com/ 
 
 
 ## Developers
@@ -21,21 +18,22 @@ To see more stuffs like this check out my Portfolio. There is a link in my GitHu
 
 ## Technologies
 
-* 
+* MongoDB
+* Node.js
+* Express
+* JavaScript 
 
 
 ## Installation
 
-This application requires the following dependencies. (The user will "npm install")
+No installation needed. Just follow the link:
 
-* "body-parser": "^"
-* "express": "^"
-* "express-handlebars": "^"
-* "mysql": "^" 
-
+* https://workout-tracker-roku.herokuapp.com/ 
+ 
 
 ## Usage
 
+Once the user loads the page he/she will be given the option to create a new workout or continue with their pre-existing workout. The user will be able to add exercises to a previous workout plan, add new exercises to a new workout plan and view multiple charts of the combined weight of all their exercises on the `stats` page.
 
 
 ## Credits
